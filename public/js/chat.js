@@ -33,6 +33,16 @@ socket.on('disconnect', () => {
   console.log('Disconnected from server');
 });
 
+socket.on('updateUserList', (users) => {
+  let ol = jQuery('<ol></ol>');
+
+  users.forEach((user) => {
+    ol.append(jQuery('<li></li>').text(user));
+  });
+
+  jQuery('#users').html(ol);
+});
+
 socket.on('newMessage', (message) => {
   let formattedTime = moment(message.createdAt).format('h:mm a');
   let template = jQuery('#message-template').html();
@@ -75,7 +85,7 @@ jQuery('#message-form').on('submit', (e) => {
 let locationButton = jQuery('#send-location');
 locationButton.on('click', () => {
   if (!navigator.geolocation) {
-    return alert('Geolocation not supported by your brower.');
+    return alert('Geolocation not supported by your browser.');
   }
 
   locationButton.attr('disabled', 'disabled').text('Sending location...');
@@ -88,6 +98,6 @@ locationButton.on('click', () => {
     });
   }, () => {
     locationButton.removeAttr('disabled').text('Send location');
-    alert('Unable to fetch location');
+    alert('Unable to fetch location.');
   });
 });
