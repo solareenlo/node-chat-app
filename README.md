@@ -2,7 +2,7 @@
 node.jsを用いた, chatページ作成の練習.
 
 ## 教材は,
-https://www.udemy.com/the-complete-nodejs-developer-course-2/learn/v4/content  
+https://www.udemy.com/the-complete-nodejs-developer-course-2/  
 のsection 9.
 
 ## デプロイ先は,
